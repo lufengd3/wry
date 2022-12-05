@@ -311,6 +311,7 @@ impl InnerWebView {
       let webview: id = msg_send![cls, alloc];
       let _preference: id = msg_send![config, preferences];
       let _yes: id = msg_send![class!(NSNumber), numberWithBool:1];
+      let _no: id = msg_send![class!(NSNumber), numberWithBool:0];
 
       #[cfg(target_os = "macos")]
       (*webview).set_ivar(ACCEPT_FIRST_MOUSE, attributes.accept_first_mouse);
@@ -324,6 +325,8 @@ impl InnerWebView {
       }
 
       let _: id = msg_send![_preference, setValue:_yes forKey:NSString::new("allowsPictureInPictureMediaPlayback")];
+
+      let _: id = msg_send![_preference, setValue:_no forKey:NSString::new("webSecurityEnabled")];
 
       #[cfg(target_os = "macos")]
       let _: id = msg_send![_preference, setValue:_yes forKey:NSString::new("tabFocusesLinks")];
