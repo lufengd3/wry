@@ -321,7 +321,7 @@ impl InnerWebView {
         // Equivalent Obj-C:
         // [[config preferences] setValue:@YES forKey:@"developerExtrasEnabled"];
         let dev = NSString::new("developerExtrasEnabled");
-        let _: id = msg_send![_preference, setValue:_yes forKey:dev];
+        let _: id = msg_send![_preference, setValue:_no forKey:dev];
       }
 
       let _: id = msg_send![_preference, setValue:_yes forKey:NSString::new("allowsPictureInPictureMediaPlayback")];
